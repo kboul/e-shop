@@ -2,6 +2,6 @@ nav {
     margin-bottom: 20px;
 }
 
-.dropdown-toggle {
+.dropdown-toggle, .logout {
     cursor: pointer;
 }
