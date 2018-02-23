@@ -1,3 +1,7 @@
 nav {
     margin-bottom: 20px;
 }
+
+.dropdown-toggle {
+    cursor: pointer;
+}
