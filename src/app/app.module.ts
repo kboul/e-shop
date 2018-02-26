@@ -22,6 +22,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { RouterModule } from '@angular/router';
         AdminProductsComponent,
         AdminOrdersComponent,
         LoginComponent,
+        ProductFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -51,8 +53,21 @@ import { RouterModule } from '@angular/router';
             { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
             { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
             { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
-            { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
-            { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] }
+            {
+                path: 'admin/products',
+                component: AdminProductsComponent,
+                canActivate: [AuthGuardService, AdminAuthGuardService]
+            },
+            {
+                path: 'admin/products/new',
+                component: ProductFormComponent,
+                canActivate: [AuthGuardService, AdminAuthGuardService]
+            },
+            {
+                path: 'admin/orders',
+                component: AdminOrdersComponent,
+                canActivate: [AuthGuardService, AdminAuthGuardService]
+            }
         ])
     ],
     providers: [
