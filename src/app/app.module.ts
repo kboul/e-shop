@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
@@ -55,7 +56,8 @@ import { RouterModule } from '@angular/router';
     ],
     providers: [
         AuthService,
-        AuthGuardService
+        AuthGuardService,
+        UserService
     ],
     bootstrap: [AppComponent]
 })
