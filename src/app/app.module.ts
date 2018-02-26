@@ -1,6 +1,7 @@
-import { UserService } from './user.service';
-import { AuthGuardService } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { UserService } from './services/user.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -57,7 +58,8 @@ import { RouterModule } from '@angular/router';
     providers: [
         AuthService,
         AuthGuardService,
-        UserService
+        UserService,
+        AdminAuthGuardService
     ],
     bootstrap: [AppComponent]
 })

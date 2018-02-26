@@ -1,6 +1,6 @@
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
     constructor(
         private auth: AuthService,
-        router: Router,
+        private router: Router,
         private userService: UserService) {
 
         auth.user$.subscribe(user => {
