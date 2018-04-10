@@ -19,7 +19,7 @@ export class ProductFormComponent {
     }
 
     save(product) {
-        this.productService.create(product);
+        this.productService.createProduct(product);
         this.router.navigate(['/admin/products']);
     }
 }
