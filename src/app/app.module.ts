@@ -28,6 +28,8 @@ import { AuthService } from './services/auth.service';
 import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
 
+import { CustomFormsModule } from 'ng2-validation';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -46,6 +48,7 @@ import { CategoryService } from './services/category.service';
     imports: [
         BrowserModule,
         FormsModule,
+        CustomFormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
