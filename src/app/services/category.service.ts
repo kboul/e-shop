@@ -8,6 +8,8 @@ export class CategoryService {
 
     getCategories() {
         // ref is used to apply category value sorting here
-        return this.db.list('/categories', ref => ref.orderByChild('name')).valueChanges();
+        return this.db
+            .list('/categories', ref => ref.orderByChild('name'))
+            .snapshotChanges();
     }
 }
