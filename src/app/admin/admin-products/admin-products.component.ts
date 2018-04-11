@@ -12,6 +12,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     products: Product[];
     filteredProducts: any[];
     subscription: Subscription;
+    displayedColumns = ['title', 'price', '$key'];
 
     constructor(private productService: ProductService) {}
 

@@ -29,6 +29,8 @@ import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
 
 import { CustomFormsModule } from 'ng2-validation';
+import { MatTableModule } from '@angular/material';
+
 
 @NgModule({
     declarations: [
@@ -49,6 +51,7 @@ import { CustomFormsModule } from 'ng2-validation';
         BrowserModule,
         FormsModule,
         CustomFormsModule,
+        MatTableModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
