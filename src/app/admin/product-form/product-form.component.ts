@@ -12,6 +12,7 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent {
     categories$;
     product = {}; // avoid getting null by setting to {}
+    id;
 
     constructor(
         private categoryService: CategoryService,
@@ -20,14 +21,18 @@ export class ProductFormComponent {
         private activatedRoute: ActivatedRoute) {
         this.categories$ = categoryService.getCategories();
 
-        const id = this.activatedRoute.snapshot.paramMap.get('id');
-        if (id) {
-            this.productService.getProduct(id).valueChanges().take(1).subscribe(p => this.product = p);
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
+        if (this.id) {
+            this.productService.getProduct(this.id).valueChanges().take(1).subscribe(p => this.product = p);
         }
     }
 
     save(product) {
-        this.productService.createProduct(product);
+        if (this.id) {
+            this.productService.update(this.id, product);
+        } else {
+            this.productService.createProduct(product);
+        }
         this.router.navigate(['/admin/products']);
     }
 }
