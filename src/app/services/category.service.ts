@@ -8,8 +8,14 @@ export class CategoryService {
 
     getCategories() {
         // ref is used to apply category value sorting here
-        return this.db
-            .list('/categories', ref => ref.orderByChild('name'))
-            .snapshotChanges();
+        return this.db.list('/categories', ref =>
+            ref.orderByChild('name')).snapshotChanges()
+                .map(action => {
+                return action.map(item => {
+                const $key = item.payload.key;
+                const data = { $key, ...item.payload.val() };
+                return data;
+            });
+        });
     }
 }
