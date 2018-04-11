@@ -30,7 +30,7 @@ import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
 
 import { CustomFormsModule } from 'ng2-validation';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -55,6 +55,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
+        MatInputModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,

@@ -2,6 +2,10 @@
     <a routerLink="/admin/products/new" class="btn btn-primary">New product</a>
 </p>
 
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
 <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header><b>Title</b></mat-header-cell>
