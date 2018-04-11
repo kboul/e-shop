@@ -62,7 +62,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } fr
         NgbModule.forRoot(),
         RouterModule.forRoot([
             { path: 'login' , component: LoginComponent },
-            { path: '', component: HomeComponent },
+            { path: '', component: ProductsComponent },
             { path: 'products', component: ProductsComponent },
             { path: 'shopping-cart', component: ShoppingCartComponent },
             { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
