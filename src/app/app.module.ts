@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from './../environments/environment';
@@ -29,8 +30,7 @@ import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
 
 import { CustomFormsModule } from 'ng2-validation';
-import { MatTableModule } from '@angular/material';
-
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -49,9 +49,12 @@ import { MatTableModule } from '@angular/material';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         CustomFormsModule,
         MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,

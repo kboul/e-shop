@@ -1,30 +1,33 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { ProductService } from './../product-form/product.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Product } from './product';
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
     selector: 'app-admin-products',
     templateUrl: './admin-products.component.html',
     styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent implements OnInit, OnDestroy {
-    products: Product[];
+export class AdminProductsComponent implements OnInit, AfterViewInit, OnDestroy {
     filteredProducts: any[];
     subscription: Subscription;
     displayedColumns = ['title', 'price', '$key'];
+    dataSource = new MatTableDataSource<Product>();
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
     constructor(private productService: ProductService) {}
 
     ngOnInit() {
-        this.subscription = this.productService.getProducts()
-            .subscribe(products => this.filteredProducts = this.products = products);
+        this.subscription = this.productService.getProducts().subscribe(products => {
+            this.dataSource.data = products;
+        });
     }
 
-    filter(query: string) {
-        this.filteredProducts = (query) ?
-            this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-            this.products;
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
 
     ngOnDestroy() {
