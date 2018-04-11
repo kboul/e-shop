@@ -18,6 +18,11 @@ export class ProductService {
         });
     }
 
+    // retreive a specific product
+    getProduct(productId) {
+        return this.db.object('/products/' + productId);
+    }
+
     // create a new product
     createProduct(product) {
         return this.db.list('/products').push(product);
