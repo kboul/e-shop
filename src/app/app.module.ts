@@ -31,6 +31,7 @@ import { CategoryService } from './services/category.service';
 
 import { CustomFormsModule } from 'ng2-validation';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } from '@angular/material';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } fr
         AdminOrdersComponent,
         LoginComponent,
         ProductFormComponent,
+        ProductCardComponent,
     ],
     imports: [
         BrowserModule,

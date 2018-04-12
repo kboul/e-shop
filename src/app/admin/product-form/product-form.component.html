@@ -82,12 +82,6 @@
         </form>
     </div>
     <div class="col-md-6" *ngIf="product.title">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" [src]="product.imageUrl" *ngIf="product.imageUrl">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.title }}</h5>
-                <p class="card-text">{{ product.price | currency:'USD':'true' }}</p>
-            </div>
-        </div>
+        <product-card [product]="product" [isBtnVisible]="false"></product-card>
     </div>
 </div>
