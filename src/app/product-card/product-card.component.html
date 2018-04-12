@@ -8,11 +8,13 @@
     <div class="card-body">
         <h5 class="card-title">{{product.title}}</h5>
         <p class="card-text">{{product.price | currency:'USD':'true'}}</p>
-        <a 
-            href="#" 
-            class="btn btn-primary"
-            *ngIf="isBtnVisible">
-            Add to cart
-        </a>
+        <div class="card-footer">
+            <a 
+                href="#" 
+                class="btn btn-primary btn-block"
+                *ngIf="isBtnVisible">
+                Add to cart
+            </a>
+        </div>
     </div>
 </div>

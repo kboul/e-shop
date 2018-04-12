@@ -1,4 +1,15 @@
+/* style the card */
 .card {
     width: 18rem; 
     margin-bottom: 20px;
+}
+
+/* remove padding from buttons */
+.card-footer {
+    padding: 0;
+}
+
+/* remove rounded corners from buttons */
+.btn {
+    border-radius: 0 !important;
 }
