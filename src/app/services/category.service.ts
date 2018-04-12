@@ -11,10 +11,10 @@ export class CategoryService {
         return this.db.list('/categories', ref =>
             ref.orderByChild('name')).snapshotChanges()
                 .map(action => {
-                return action.map(item => {
-                const $key = item.payload.key;
-                const data = { $key, ...item.payload.val() };
-                return data;
+                    return action.map(item => {
+                        const $key = item.payload.key;
+                        const data = { $key, ...item.payload.val() };
+                        return data;
             });
         });
     }

@@ -49,8 +49,9 @@
                     id="category" 
                     class="form-control"
                     required>
-                    
-                    <option *ngFor="let c of categories$ | async" [value]="c.key">{{c.payload.val().name}}</option>
+                    <option 
+                        *ngFor="let c of categories$ | async" 
+                        [value]="c.$key">{{c.name}}</option>
                 </select>
                 <div 
                     class="alert alert-danger" 
