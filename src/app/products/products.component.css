@@ -1,4 +1,6 @@
-/* avoid categories list to stick on on top monito edge */
 .sticky-top {
+    /* avoid categories list to stick on top monitor edge */
     top: 80px;
+    /* prevent ngbDropdown to be placed under categoris list */
+    z-index: 1
 }
