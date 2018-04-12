@@ -1,0 +1,4 @@
+/* avoid categories list to stick on on top monito edge */
+.sticky-top {
+    top: 80px;
+}
