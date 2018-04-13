@@ -28,6 +28,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 import { CustomFormsModule } from 'ng2-validation';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } from '@angular/material';
@@ -98,7 +99,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
         UserService,
         AdminAuthGuardService,
         CategoryService,
-        ProductService
+        ProductService,
+        ShoppingCartService
     ],
     bootstrap: [AppComponent]
 })

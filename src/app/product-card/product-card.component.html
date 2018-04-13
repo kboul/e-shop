@@ -9,11 +9,11 @@
         <h5 class="card-title">{{product.title}}</h5>
         <p class="card-text">{{product.price | currency:'USD':'true'}}</p>
         <div class="card-footer" *ngIf="isBtnVisible">
-            <a 
-                href="#" 
-                class="btn btn-primary btn-block">
+            <button 
+                class="btn btn-primary btn-block"
+                (click)="addToCart(product)">
                 Add to cart
-            </a>
+            </button>
         </div>
     </div>
 </div>
