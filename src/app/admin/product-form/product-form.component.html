@@ -51,7 +51,7 @@
                     required>
                     <option 
                         *ngFor="let c of categories$ | async" 
-                        [value]="c.$key">{{c.name}}</option>
+                        [value]="c.key">{{c.name}}</option>
                 </select>
                 <div 
                     class="alert alert-danger" 

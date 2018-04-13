@@ -12,7 +12,7 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 export class AdminProductsComponent implements OnInit, AfterViewInit, OnDestroy {
     filteredProducts: any[];
     subscription: Subscription;
-    displayedColumns = ['title', 'price', '$key'];
+    displayedColumns = ['title', 'price', 'key'];
     dataSource = new MatTableDataSource<Product>();
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;

@@ -12,8 +12,8 @@ export class CategoryService {
             ref.orderByChild('name')).snapshotChanges()
                 .map(action => {
                     return action.map(item => {
-                        const $key = item.payload.key;
-                        const data = { $key, ...item.payload.val() };
+                        const key = item.payload.key;
+                        const data = { key, ...item.payload.val() };
                         return data;
             });
         });

@@ -17,10 +17,10 @@
         <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="$key">
+    <ng-container matColumnDef="key">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element"> 
-            <a [routerLink]="['/admin/products/', element.$key]">Edit</a> 
+            <a [routerLink]="['/admin/products/', element.key]">Edit</a> 
         </mat-cell>
     </ng-container>
 
