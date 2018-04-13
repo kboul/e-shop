@@ -11,15 +11,9 @@ export class ProductCardComponent {
     @Input() product: Product;
     @Input() isBtnVisible = true;
 
-    constructor(private shoppingCartService: ShoppingCartService) { }
+    constructor(private cartService: ShoppingCartService) { }
 
     addToCart(product: Product) {
-        const cartId = localStorage.getItem('cartId');
-        // store the cartdId in case client leaves and returns to the page
-        if (!cartId) {
-            this.shoppingCartService.create().then(result => {
-                localStorage.setItem('cartId', result.key);
-            });
-        }
+        this.cartService.addToCart(product);
     }
 }
