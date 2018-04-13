@@ -21,7 +21,7 @@
         <div class="row">
             <div *ngFor="let p of filteredProducts; index as i">
                 <div class="col">
-                    <product-card [product]="p"></product-card>
+                    <product-card [product]="p" [shoppingCart]="cart"></product-card>
                 </div>
             </div>
         </div>

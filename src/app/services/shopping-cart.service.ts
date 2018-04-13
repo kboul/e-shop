@@ -14,11 +14,16 @@ export class ShoppingCartService {
         });
     }
 
+    async getCart() {
+        const cartId = await this.getOrCreateCartId();
+        return this.db.object('/shopping-carts/' + cartId);
+    }
+
     private getItem(cartId: string, productId: string) {
         return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
     }
 
-    private async getOrCreateCart() {
+    private async getOrCreateCartId() {
         const cartId = localStorage.getItem('cartId');
         // store the cartdId in case client leaves and returns to the page
         if (cartId) { return cartId; }
@@ -30,10 +35,9 @@ export class ShoppingCartService {
     }
 
     async addToCart(product: Product) {
-        const cartId = await this.getOrCreateCart();
+        const cartId = await this.getOrCreateCartId();
         const item$ = this.getItem(cartId, product.key);
         item$.snapshotChanges().take(1).subscribe(item => {
-            console.log(item.payload);
             if (item.payload.exists()) {
                 item$.update({ product: product, quantity: item.payload.val().quantity + 1 });
             } else {
