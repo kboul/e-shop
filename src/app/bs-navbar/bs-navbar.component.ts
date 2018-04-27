@@ -11,7 +11,7 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 })
 export class BsNavbarComponent implements OnInit {
     appUser: AppUser;
-    shoppingCartItemCount: number;
+    totalItemsInCart: number;
 
     constructor(
         private auth: AuthService,
@@ -20,14 +20,8 @@ export class BsNavbarComponent implements OnInit {
 
     async ngOnInit() {
         this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-        const cart$ = await this.shoppingCartService.getCart();
-        cart$.valueChanges().subscribe(cart => {
-            this.shoppingCartItemCount = 0;
-            if (!cart) { return; }
-            for (const productId of Object.keys(cart.items)) {
-                this.shoppingCartItemCount += cart.items[productId].quantity;
-            }
-        });
+        const cart$ = await this.shoppingCartService.totalItemsInCart();
+        cart$.subscribe(count => this.totalItemsInCart = count);
     }
 
     logout() {
