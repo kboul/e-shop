@@ -11,20 +11,24 @@
         <div class="card-footer" *ngIf="isBtnVisible">
             <button 
                 class="btn btn-primary btn-block"
-                (click)="addToCart(product)"
+                (click)="addToCart()"
                 *ngIf="getQuantity() === 0 else updateQuantity">
                 Add to cart
             </button>
             <ng-template #updateQuantity>
                 <div class="row no-gutters">
                     <div class="col-2">
-                        <button class="btn btn-primary btn-block">-</button>
+                        <button 
+                            class="btn btn-primary btn-block"
+                            (click)="removeFromCart()">-</button>
                     </div>
                     <div class="col text-center my-auto">
                         {{ getQuantity() }} in cart
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-primary btn-block">+</button>
+                        <button 
+                            class="btn btn-primary btn-block"
+                            (click)="addToCart()">+</button>
                     </div>
                 </div>
             </ng-template>
