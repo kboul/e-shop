@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Product } from './../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from './../services/category.service';
@@ -13,8 +13,8 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
     // initialize arrays to avoid getting undefined in the first place
-    products: Product[] = [];
-    filteredProducts: Product[] = [];
+    products = [];
+    filteredProducts = [];
     categories$;
     category: string;
     cart: any;

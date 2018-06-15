@@ -1,3 +1,5 @@
+
+import {map} from 'rxjs/operators';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -9,13 +11,13 @@ export class CategoryService {
     getCategories() {
         // ref is used to apply category value sorting here
         return this.db.list('/categories', ref =>
-            ref.orderByChild('name')).snapshotChanges()
-                .map(action => {
+            ref.orderByChild('name')).snapshotChanges().pipe(
+                map(action => {
                     return action.map(item => {
                         const key = item.payload.key;
                         const data = { key, ...item.payload.val() };
                         return data;
             });
-        });
+        }));
     }
 }

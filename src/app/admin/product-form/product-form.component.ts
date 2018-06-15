@@ -1,8 +1,10 @@
+
+import {take} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { CategoryService } from './../../services/category.service';
 import { ProductService } from './product.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/take';
+
 
 @Component({
   selector: 'app-product-form',
@@ -23,7 +25,7 @@ export class ProductFormComponent {
 
         this.id = this.activatedRoute.snapshot.paramMap.get('id');
         if (this.id) {
-            this.productService.getProduct(this.id).valueChanges().take(1).subscribe(p => this.product = p);
+            this.productService.getProduct(this.id).valueChanges().pipe(take(1)).subscribe(p => this.product = p);
         }
     }
 

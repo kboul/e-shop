@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Product } from './../models/product';
-import 'rxjs/add/operator/take';
+import { map, take } from 'rxjs/operators';
 import { ShoppingCart } from '../models/shopping-cart';
 
 @Injectable()
@@ -46,7 +46,8 @@ export class ShoppingCartService {
     private async updateItemQuantity(product: Product, change: number) {
         const cartId = await this.getOrCreateCartId();
         const item$ = this.getItem(cartId, product.key);
-        item$.snapshotChanges().take(1).subscribe(item => {
+        item$.snapshotChanges().pipe(take(1)).subscribe(item => {
+            console.log(item.payload.val());
             item$.update(
                 {
                     product: product,
@@ -58,13 +59,13 @@ export class ShoppingCartService {
 
     async totalItemsInCart() {
         const cart$ = await this.getCart();
-        return cart$.valueChanges().map(cart => {
+        return cart$.valueChanges().pipe(map(cart => {
             let totalItems = 0;
             if (!cart) { return; }
             for (const productId of Object.keys(cart.items)) {
                 totalItems += cart.items[productId].quantity;
             }
             return totalItems;
-        });
+        }));
     }
 }
