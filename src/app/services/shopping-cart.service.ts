@@ -45,15 +45,18 @@ export class ShoppingCartService {
 
     private async updateItemQuantity(product: Product, change: number) {
         const cartId = await this.getOrCreateCartId();
-        const item$ = this.getItem(cartId, product.key);
-        item$.snapshotChanges().pipe(take(1)).subscribe(item => {
-            console.log(item.payload.val());
-            item$.update(
-                {
-                    product: product,
-                    quantity: (item.payload.val() ? item.payload.val().quantity : 0) + change
-                }
-            );
+        const item: AngularFireObject<{}> = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
+        const itemSnap$ = item.snapshotChanges();
+
+        itemSnap$.pipe(take(1)).subscribe((data: any) => {
+            const prod = { key: data.payload.key, ...data.payload.val() };
+            const exists: boolean = data.payload.val() !== null;
+            console.log('Exists: ', exists);
+
+            if (exists)
+                item.update({ product: product, quantity: prod.quantity + change });
+            else
+                item.set({ product: product, quantity: 0 });
         });
     }
 
