@@ -21,6 +21,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { UserService } from './services/user.service';
@@ -32,7 +34,6 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 
 import { CustomFormsModule } from 'ng2-validation';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } from '@angular/material';
-import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
         LoginComponent,
         ProductFormComponent,
         ProductCardComponent,
+        ProductQuantityComponent,
     ],
     imports: [
         BrowserModule,
