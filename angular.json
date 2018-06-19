@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "e-shop": {
-      "root": "",
+      "root": "app",
       "sourceRoot": "src",
       "projectType": "application",
       "architect": {
@@ -102,7 +102,7 @@
       }
     },
     "e-shop-e2e": {
-      "root": "",
+      "root": "app",
       "sourceRoot": "e2e",
       "projectType": "application",
       "architect": {
