@@ -7,13 +7,12 @@ import { ShoppingCartService } from './../services/shopping-cart.service';
     styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-    totalItemsInCart: number;
+    cart$;
 
     constructor(private shoppingCartService: ShoppingCartService) { }
 
     async ngOnInit() {
-        const cart$ = await this.shoppingCartService.totalItemsInCart();
-        cart$.subscribe(count => this.totalItemsInCart = count);
+        this.cart$ = await this.shoppingCartService.getCart();
     }
 
 }

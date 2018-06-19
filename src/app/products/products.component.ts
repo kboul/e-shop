@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
                 this.products.filter(p => p.category === this.category) : this.products;
         });
 
-        this.subscription = (await this.cartService.getCart()).valueChanges()
+        this.subscription = (await this.cartService.getCart())
             .subscribe(cart => this.cart = cart);
     }
 

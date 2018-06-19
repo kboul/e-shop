@@ -3,6 +3,7 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Product } from './../models/product';
 import { map, take } from 'rxjs/operators';
 import { ShoppingCart } from '../models/shopping-cart';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ShoppingCartService {
@@ -15,9 +16,14 @@ export class ShoppingCartService {
         });
     }
 
-    async getCart(): Promise<AngularFireObject<ShoppingCart>> {
+    async getCart(): Promise<Observable<ShoppingCart>> {
         const cartId = await this.getOrCreateCartId();
-        return this.db.object('/shopping-carts/' + cartId);
+        return this.db.object('/shopping-carts/' + cartId)
+            .snapshotChanges().pipe(
+                map(x => {
+                    return new ShoppingCart(x.payload.val().items);
+                })
+        );
     }
 
     private getItem(cartId: string, productId: string) {
@@ -60,15 +66,14 @@ export class ShoppingCartService {
         });
     }
 
-    async totalItemsInCart() {
-        const cart$ = await this.getCart();
-        return cart$.valueChanges().pipe(map(cart => {
-            let totalItems = 0;
-            if (!cart) { return; }
-            for (const productId of Object.keys(cart.items)) {
-                totalItems += cart.items[productId].quantity;
-            }
-            return totalItems;
-        }));
-    }
+    // async totalItemsInCart() {
+    //     const cart$ = await this.getCart();
+    //     return cart$.valueChanges().pipe(map(cart => {
+    //         let totalItems = 0;
+    //         if (!cart) return;
+    //         for (const productId of Object.keys(cart.items))
+    //             totalItems += cart.items[productId].quantity;
+    //         return totalItems;
+    //     }));
+    // }
 }
