@@ -65,15 +65,4 @@ export class ShoppingCartService {
                 item.set({ product: product, quantity: 0 });
         });
     }
-
-    // async totalItemsInCart() {
-    //     const cart$ = await this.getCart();
-    //     return cart$.valueChanges().pipe(map(cart => {
-    //         let totalItems = 0;
-    //         if (!cart) return;
-    //         for (const productId of Object.keys(cart.items))
-    //             totalItems += cart.items[productId].quantity;
-    //         return totalItems;
-    //     }));
-    // }
 }
