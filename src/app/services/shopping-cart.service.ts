@@ -58,11 +58,15 @@ export class ShoppingCartService {
 
         itemSnap$.pipe(take(1)).subscribe((data: any) => {
             const prod = { key: data.payload.key, ...data.payload.val() };
-            item.update({
+            const quantity = (prod.quantity || 0) + change;
+            // remove item if quantity reached 0
+            if (quantity === 0) item.remove();
+            // else update its values
+            else item.update({
                 title: product.title,
                 imageUrl: product.imageUrl,
                 price: product.price,
-                quantity: (prod.quantity || 0) + change
+                quantity: quantity
             });
         });
     }
