@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../services/shopping-cart.service';
-import { ShoppingCart } from '../models/shopping-cart';
 import { AuthService } from './../services/auth.service';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'bs-navbar',
@@ -13,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class BsNavbarComponent implements OnInit {
     appUser: AppUser;
-    cart$: Observable<ShoppingCart>;
+    cart$;
 
     constructor(
         private auth: AuthService,

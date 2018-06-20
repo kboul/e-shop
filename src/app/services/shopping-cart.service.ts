@@ -26,10 +26,6 @@ export class ShoppingCartService {
         );
     }
 
-    private getItem(cartId: string, productId: string) {
-        return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
-    }
-
     private async getOrCreateCartId() {
         const cartId = localStorage.getItem('cartId');
         // store the cartdId in case client leaves and returns to the page
@@ -42,27 +38,26 @@ export class ShoppingCartService {
     }
 
     async addToCart(product: Product) {
-        this.updateItemQuantity(product, 1);
+        this.updateItem(product, 1);
     }
 
     async removeFromCart(product: Product) {
-        this.updateItemQuantity(product, -1);
+        this.updateItem(product, -1);
     }
 
-    private async updateItemQuantity(product: Product, change: number) {
+    private async updateItem(product: Product, change: number) {
         const cartId = await this.getOrCreateCartId();
         const item: AngularFireObject<{}> = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
         const itemSnap$ = item.snapshotChanges();
 
         itemSnap$.pipe(take(1)).subscribe((data: any) => {
             const prod = { key: data.payload.key, ...data.payload.val() };
-            const exists: boolean = data.payload.val() !== null;
-            console.log('Exists: ', exists);
-
-            if (exists)
-                item.update({ product: product, quantity: prod.quantity + change });
-            else
-                item.set({ product: product, quantity: 0 });
+            item.update({
+                title: product.title,
+                imageUrl: product.imageUrl,
+                price: product.price,
+                quantity: (prod.quantity || 0) + change
+            });
         });
     }
 }
