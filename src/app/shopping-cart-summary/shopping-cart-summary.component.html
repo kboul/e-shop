@@ -1,7 +1,11 @@
 <div class="card">
     <div class="card-body" *ngIf="cart">
-        <h5 class="card-title">Order Summary</h5>
-        <p class="card-text">You have {{cart.totalItemsCount}} items in the shopping cart.</p>
+        <h5 class="card-title">
+            <b>Order Summary</b>
+        </h5>
+        <p class="card-text">
+            You have <b>{{cart.totalItemsCount}}</b> items in the shopping cart.
+        </p>
         <ul class="list-group">
             <li 
                 *ngFor="let item of cart.items" 
