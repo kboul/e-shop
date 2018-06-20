@@ -8,8 +8,8 @@
         <thead>
             <tr>
                 <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-right">Price</th>
             </tr>
         </thead>
         <tbody>
@@ -21,14 +21,18 @@
                         [shoppingCart]="cart">
                     </product-quantity>
                 </td>
-                <td>{{item.totalPrice | currency:'USD'}}</td>
+                <td class="text-right">
+                    {{item.totalPrice | currency:'USD'}}
+                </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th></th>
                 <th></th>
-                <th>{{cart.totalPrice | currency:'USD'}}</th>
+                <th class="text-right">
+                    {{cart.totalPrice | currency:'USD'}}
+                </th>
             </tr>
         </tfoot>
     </table>
