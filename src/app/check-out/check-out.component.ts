@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShoppingCartService } from './../services/shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Subscription } from 'rxjs';
-import { OrderService } from './../order.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
     selector: 'check-out',

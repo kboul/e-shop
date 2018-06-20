@@ -31,7 +31,7 @@ import { AuthService } from './services/auth.service';
 import { ProductService } from './admin/product-form/product.service';
 import { CategoryService } from './services/category.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { OrderService } from './order.service';
+import { OrderService } from './services/order.service';
 
 import { CustomFormsModule } from 'ng2-validation';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } from '@angular/material';
