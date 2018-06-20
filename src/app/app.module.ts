@@ -23,6 +23,7 @@ import { RouterModule } from '@angular/router';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { UserService } from './services/user.service';
@@ -52,6 +53,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule  } fr
         ProductFormComponent,
         ProductCardComponent,
         ProductQuantityComponent,
+        ShoppingCartSummaryComponent,
     ],
     imports: [
         BrowserModule,
