@@ -5,3 +5,7 @@ nav {
 .dropdown-toggle, .logout {
     cursor: pointer;
 }
+
+.badge {
+    margin-left: 5px;
+}
