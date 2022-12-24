@@ -1,15 +1,15 @@
 /* style the card */
 .card {
-    width: 18rem; 
-    margin-bottom: 20px;
+  width: 18rem;
+  margin-bottom: 20px;
 }
 
 /* remove padding from buttons */
 .card-footer {
-    padding: 0;
+  padding: 0;
 }
 
 /* remove rounded corners from buttons */
 .btn {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }

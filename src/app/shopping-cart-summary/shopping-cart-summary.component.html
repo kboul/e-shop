@@ -1,26 +1,24 @@
 <div class="card">
-    <div class="card-body" *ngIf="cart">
-        <h5 class="card-title">
-            <b>Order Summary</b>
-        </h5>
-        <p class="card-text">
-            You have <b>{{cart.totalItemsCount}}</b> items in the shopping cart.
-        </p>
-        <ul class="list-group">
-            <li 
-                *ngFor="let item of cart.items" 
-                class="list-group-item">
-                {{item.quantity}} x {{item.title}}
-                <div class="float-right">
-                    {{item.totalPrice | currency:'USD'}}
-                </div>
-            </li>
-            <li class="list-group-item">
-                <b>Total</b>
-                <div class="float-right">
-                    <b>{{cart.totalPrice | currency:'USD'}}</b>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div class="card-body" *ngIf="cart">
+    <h5 class="card-title">
+      <b>Order Summary</b>
+    </h5>
+    <p class="card-text">
+      You have <b>{{ cart.totalItemsCount }}</b> items in the shopping cart.
+    </p>
+    <ul class="list-group">
+      <li *ngFor="let item of cart.items" class="list-group-item">
+        {{ item.quantity }} x {{ item.title }}
+        <div class="float-right">
+          {{ item.totalPrice | currency : "USD" }}
+        </div>
+      </li>
+      <li class="list-group-item">
+        <b>Total</b>
+        <div class="float-right">
+          <b>{{ cart.totalPrice | currency : "USD" }}</b>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

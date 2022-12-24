@@ -1,32 +1,31 @@
 <div class="row">
-    <div class="col-3">
-        <div class="list-group sticky-top">
-            <a 
-                class="list-group-item list-group-item-action" 
-                routerLink=""
-                [class.active]="!category">
-                All Categories
-            </a>
-            <a  
-                class="list-group-item list-group-item-action" 
-                *ngFor="let c of categories$ | async"
-                routerLink=""
-                [queryParams]="{category: c.key}"
-                [class.active]="c.key === category">
-                {{c.name}}
-            </a>
-        </div>
+  <div class="col-3">
+    <div class="list-group sticky-top">
+      <a
+        class="list-group-item list-group-item-action"
+        routerLink=""
+        [class.active]="!category"
+      >
+        All Categories
+      </a>
+      <a
+        class="list-group-item list-group-item-action"
+        *ngFor="let c of categories$ | async"
+        routerLink=""
+        [queryParams]="{ category: c.key }"
+        [class.active]="c.key === category"
+      >
+        {{ c.name }}
+      </a>
     </div>
-    <div class="col-9">
-        <div class="row" *ngIf="cart$ | async as cart">
-            <div *ngFor="let p of filteredProducts; index as i">
-                <div class="col">
-                    <product-card 
-                        [product]="p" 
-                        [shoppingCart]="cart">
-                    </product-card>
-                </div>
-            </div>
+  </div>
+  <div class="col-9">
+    <div class="row" *ngIf="cart$ | async as cart">
+      <div *ngFor="let p of filteredProducts; index as i">
+        <div class="col">
+          <product-card [product]="p" [shoppingCart]="cart"> </product-card>
         </div>
+      </div>
     </div>
+  </div>
 </div>

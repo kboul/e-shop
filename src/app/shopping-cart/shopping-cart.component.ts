@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from './../services/shopping-cart.service';
+import { Component, OnInit } from "@angular/core";
+import { ShoppingCartService } from "./../services/shopping-cart.service";
 
 @Component({
-    selector: 'app-shopping-cart',
-    templateUrl: './shopping-cart.component.html',
-    styleUrls: ['./shopping-cart.component.css']
+  selector: "app-shopping-cart",
+  templateUrl: "./shopping-cart.component.html",
+  styleUrls: ["./shopping-cart.component.css"],
 })
 export class ShoppingCartComponent implements OnInit {
-    cart$;
+  cart$;
 
-    constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
-    async ngOnInit() {
-        this.cart$ = await this.shoppingCartService.getCart();
-    }
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
+  }
 
-    clearCart() {
-        this.shoppingCartService.clearCart();
-    }
+  clearCart() {
+    this.shoppingCartService.clearCart();
+  }
 }

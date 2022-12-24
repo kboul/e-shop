@@ -1,11 +1,12 @@
 nav {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-.dropdown-toggle, .logout {
-    cursor: pointer;
+.dropdown-toggle,
+.logout {
+  cursor: pointer;
 }
 
 .badge {
-    margin-left: 5px;
+  margin-left: 5px;
 }

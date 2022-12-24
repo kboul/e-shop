@@ -1,51 +1,49 @@
 <h1>Shopping Cart</h1>
 <div class="col-md-12" *ngIf="cart$ | async as cart">
-    <p>
-        You have {{ cart.totalItemsCount }} items in your shopping cart.
-    </p>
+  <p>You have {{ cart.totalItemsCount }} items in your shopping cart.</p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-right">Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of cart.items">
-                <td>{{item.title}}</td>
-                <td>
-                    <product-quantity 
-                        [product]="item" 
-                        [shoppingCart]="cart">
-                    </product-quantity>
-                </td>
-                <td class="text-right">
-                    {{item.totalPrice | currency:'USD'}}
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th></th>
-                <th></th>
-                <th class="text-right">
-                    {{cart.totalPrice | currency:'USD'}}
-                </th>
-            </tr>
-        </tfoot>
-    </table>
-    <a 
-        *ngIf="cart.items.length" 
-        routerLink="/check-out"
-        class="btn btn-primary btn-sm float-right">
-        Check Out
-    </a>
-    <button 
-        *ngIf="cart.items.length"
-        (click)="clearCart()"
-        class="btn btn-danger btn-sm">
-        Clear Shopping cart
-    </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-right">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.items">
+        <td>{{ item.title }}</td>
+        <td>
+          <product-quantity [product]="item" [shoppingCart]="cart">
+          </product-quantity>
+        </td>
+        <td class="text-right">
+          {{ item.totalPrice | currency : "USD" }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="text-right">
+          {{ cart.totalPrice | currency : "USD" }}
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+  <a
+    *ngIf="cart.items.length"
+    routerLink="/check-out"
+    class="btn btn-primary btn-sm float-right"
+  >
+    Check Out
+  </a>
+  <button
+    *ngIf="cart.items.length"
+    (click)="clearCart()"
+    class="btn btn-danger btn-sm"
+  >
+    Clear Shopping cart
+  </button>
 </div>
